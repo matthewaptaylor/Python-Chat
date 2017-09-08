@@ -2,7 +2,7 @@
 import socket
 import random
 
-HOST = 'localhost'                 # Symbolic name meaning all available interfaces
+HOST = socket.gethostbyname(socket.gethostname())                 # Symbolic name meaning all available interfaces
 PORT = random.randint(5000, 6000)              # Arbitrary non-privileged port
 
 print"""
@@ -11,7 +11,7 @@ Chat Server
 ===========
 """
 
-print "Connect to this computer by opening the client app, and typing this in the host: " + socket.getfqdn()
+print "Connect to this computer by opening the client app, and typing this in the host: " + HOST
 print "and this in the port: " + str(PORT)
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)

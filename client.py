@@ -1,5 +1,6 @@
 # Echo client program
 import socket
+import time
 
 HOST = raw_input("Host: ")    # The remote host
 PORT = int(raw_input("Port: "))           # The same port as used by the server
@@ -19,5 +20,5 @@ while True:
     #print 'Received', repr(data)
 
 s.close()
-
+time.sleep(20)
 # Have one server, one app that makes messages, one app that receives them
