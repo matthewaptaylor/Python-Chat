@@ -1,9 +1,10 @@
-# Echo server program
 import socket
 import random
 
-HOST = socket.gethostbyname(socket.gethostname())                 # Symbolic name meaning all available interfaces
-PORT = random.randint(5000, 6000)              # Arbitrary non-privileged port
+HOST = socket.gethostbyname(socket.gethostname())
+PORT = 5000
+
+ip = []
 
 print"""
 ===========
@@ -12,18 +13,21 @@ Chat Server
 """
 
 print "Connect to this computer by opening the client app, and typing this in the host: " + HOST
-print "and this in the port: " + str(PORT)
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.bind((HOST, PORT))
-s.listen(1)
-conn, addr = s.accept()
-print 'Connected to: ', addr
 while 1:
+    s.listen(1)
+    conn, addr = s.accept()
     data = conn.recv(1024)
+    print "Connected to: " + str(addr) + ", Message: " + data
     if not data: break
-    print data
+    if ip.count(addr[0]) == 0:
+        ip.append(addr[0])
+    for x in ip:
+        sR = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        sR.connect((x, 5100))
+        sR.sendall(data)
+        sR.close()
     conn.sendall(data)
 conn.close()
-
-#add clients to a list and iteratre through, checking is something new has been sent.
