@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Python Chat Server v1.0 by Matthew Taylor. See more at matthewaptaylor.github.io. This is licensed under the MIT license. This license requires credit to be given to the program's creator.
 =======
 # Python chat server by Matthew Taylor. See more at matthewaptaylor.github.io. This is licensed under the MIT license. This license requires credit to be given to the program's creator.
@@ -7,7 +6,6 @@ import socket
 import random
 import os
 
-<<<<<<< HEAD
 HOST = "0.0.0.0"                 # Symbolic name meaning all available interfaces
 PORT = random.randint(5000, 6000)              # Arbitrary non-privileged port
 
@@ -23,7 +21,6 @@ Chat Server
 ===========
 """
 
-<<<<<<< HEAD
 print "This program's connection info: "
 print "Host: " + socket.gethostbyname(socket.gethostname())
 print "Port: " + str(PORT)
